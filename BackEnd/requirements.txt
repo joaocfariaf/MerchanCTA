@@ -1,0 +1,7 @@
+Flask
+Flask-Restful
+Flask-SQLAlchemy
+flask-heroku
+SQLAlchemy
+Psycopg2
+Gunicorn
