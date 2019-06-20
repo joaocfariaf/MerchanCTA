@@ -12,10 +12,12 @@ Base = declarative_base()
 Base.query = db_session.query_property()
 
 def init_db():
+    from models.User import User
     from models.Store import Store
     from models.Product import Product
 
 def config_db():
+    from models.User import User
     from models.Store import Store
     from models.Product import Product
     Base.metadata.create_all(bind=engine)
