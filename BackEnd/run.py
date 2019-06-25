@@ -18,26 +18,27 @@ jwt = JWTManager(app)
 
 api = Api(app)
 
-from routes.StoreApis import StoreApi, StoreListApi
-from routes.ProductApis import ProductApi
-
-api.add_resource(StoreListApi, '/store')
-api.add_resource(StoreApi, '/store/<string:store_id>')
-api.add_resource(ProductApi, '/product')
-
-from routes.AuthApi import UserRegistration
-from routes.AuthApi import UserLogin
-from routes.AuthApi import TokenRefresh
-from routes.AuthApi import AllUsers
-from routes.AuthApi import SecretResource
-
-api.add_resource(UserRegistration, '/registration')
-api.add_resource(UserLogin, '/login')
-api.add_resource(TokenRefresh, '/token/refresh')
-api.add_resource(AllUsers, '/users')
-api.add_resource(SecretResource, '/secret')
-
 heroku = Heroku(app)
 
 if __name__ == '__main__':
+    from routes.StoreApis import StoreApi, StoreListApi
+    from routes.ProductApis import ProductApi
+
+    api.add_resource(StoreListApi, '/store')
+    api.add_resource(StoreApi, '/store/<string:store_id>')
+    api.add_resource(ProductApi, '/product')
+
+    from routes.AuthApi import UserRegistration
+    from routes.AuthApi import UserLogin
+    from routes.AuthApi import TokenRefresh
+    from routes.AuthApi import AllUsers
+    from routes.AuthApi import SecretResource
+
+    api.add_resource(UserRegistration, '/registration')
+    api.add_resource(UserLogin, '/login')
+    api.add_resource(TokenRefresh, '/token/refresh')
+    api.add_resource(AllUsers, '/users')
+    api.add_resource(SecretResource, '/secret')
+
+    
     app.run()
