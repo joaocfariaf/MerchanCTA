@@ -12,8 +12,8 @@ const NewOrders = (props) => {
       height: 150
     },
     div: {
-      height: 95,
-      padding: '5px 15px 0 15px'
+      height: 0,
+      padding: '0px 15px 0 0px'
     },
     header: {
       fontSize: 24,
