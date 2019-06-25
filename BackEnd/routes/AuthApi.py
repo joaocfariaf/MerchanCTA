@@ -54,16 +54,6 @@ class UserLogin(Resource):
             return {'message': 'Wrong credentials'}
       
       
-#class UserLogoutAccess(Resource):
-#    def post(self):
-#        return {'message': 'User logout'}
-      
-      
-#class UserLogoutRefresh(Resource):
-#    def post(self):
-#        return {'message': 'User logout'}
-      
-      
 class TokenRefresh(Resource):
     @jwt_refresh_token_required
     def post(self):
