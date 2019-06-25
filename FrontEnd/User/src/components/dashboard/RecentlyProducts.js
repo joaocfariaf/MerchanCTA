@@ -41,7 +41,7 @@ const RecentlyProducts = (props) => {
   return (
     <Paper>
       <List>
-        <Subheader style={styles.subheader}>Recent Products</Subheader>
+        <Subheader style={styles.subheader}>Produtos Recentes</Subheader>
         {props.data.map(item =>
           <div key={item.title}>
             <ListItem
@@ -50,7 +50,7 @@ const RecentlyProducts = (props) => {
               secondaryText={item.text}
               rightIconButton={rightIconMenu}
             />
-            <Divider inset={true} />
+            <Divider inset={false} />
           </div>
         )}
       </List>
