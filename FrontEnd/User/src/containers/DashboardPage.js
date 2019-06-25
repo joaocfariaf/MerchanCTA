@@ -25,43 +25,32 @@ class DashboardPage extends React.Component {
     return (
       <div>
         <h3 style={globalStyles.navigation}>Application / Dashboard</h3>
+        <div className="row">
+          <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-b-15 ">
+            <InfoBox Icon={Coffee}
+                    color={pink600}
+                    title="Comidas"
+            />
+          </div>
 
-        <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-b-15 ">
-          <InfoBox Icon={Coffee}
-                   color={pink600}
-                   title="Comidas"
-          />
+          <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-b-15 ">
+            <InfoBox Icon={Car}
+                    color={orange600}
+                    title="Transporte"
+            />
+          </div>
+
+          <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-b-15 ">
+            <InfoBox Icon={Assessment}
+                    color={purple600}
+                    title="Outros"
+            />
+          </div>
         </div>
-
-        <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-b-15 ">
-          <InfoBox Icon={Car}
-                   color={orange600}
-                   title="Transporte"
-          />
-        </div>
-
-        <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-b-15 ">
-          <InfoBox Icon={Assessment}
-                   color={purple600}
-                   title="Outros"
-          />
-        </div>
-
-      </div>
-
-          {/* <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 m-b-15">
-            <MonthlySales data={Data.dashBoardPage.monthlySales}/>
-          </div> */}
-        </div>
-
         <div className="row">
           <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 m-b-15 ">
             <RecentlyProducts data={this.state.recentProducts}/>
           </div>
-
-          {/* <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 m-b-15 ">
-            <BrowserUsage data={Data.dashBoardPage.browserUsage}/>
-          </div> */}
         </div>
       </div>
     );
