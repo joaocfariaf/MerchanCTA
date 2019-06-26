@@ -4,7 +4,7 @@ import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import Checkbox from 'material-ui/Checkbox';
-import {grey500, white} from 'material-ui/styles/colors';
+import {blue900, white} from 'material-ui/styles/colors';
 import PersonAdd from 'material-ui/svg-icons/social/person-add';
 import Help from 'material-ui/svg-icons/action/help';
 import TextField from 'material-ui/TextField';
@@ -33,7 +33,7 @@ const LoginPage = () => {
       padding: 10
     },
     flatButton: {
-      color: grey500
+      color: blue900
     },
     checkRemember: {
       style: {
@@ -42,12 +42,12 @@ const LoginPage = () => {
         paddingTop: 5
       },
       labelStyle: {
-        color: grey500
+        color: blue900
       },
       iconStyle: {
-        color: grey500,
-        borderColor: grey500,
-        fill: grey500
+        color: blue900,
+        borderColor: blue900,
+        fill: blue900
       }
     },
     loginBtn: {
@@ -60,12 +60,6 @@ const LoginPage = () => {
       borderRadius: 2,
       margin: 2,
       fontSize: 13
-    },
-    btnFacebook: {
-      background: '#4f81e9'
-    },
-    btnGoogle: {
-      background: '#e14441'
     },
     btnSpan: {
       marginLeft: 5
@@ -123,17 +117,6 @@ const LoginPage = () => {
               style={styles.flatButton}
               icon={<Help />}
             />
-          </div>
-
-          <div style={styles.buttonsDiv}>
-            <Link to="/" style={{...styles.btn, ...styles.btnFacebook}}>
-              <i className="fa fa-facebook fa-lg"/>
-              <span style={styles.btnSpan}>Log in with Facebook</span>
-            </Link>
-            <Link to="/" style={{...styles.btn, ...styles.btnGoogle}}>
-              <i className="fa fa-google-plus fa-lg"/>
-              <span style={styles.btnSpan}>Log in with Google</span>
-            </Link>
           </div>
         </div>
       </div>
