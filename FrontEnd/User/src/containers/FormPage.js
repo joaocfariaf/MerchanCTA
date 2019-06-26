@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import RaisedButton from "material-ui/RaisedButton";
 import TextField from "material-ui/TextField";
 import { grey400 } from "material-ui/styles/colors";
-// import Divider from "material-ui/Divider";
+//import Divider from "material-ui/Divider";
 import PageBase from "../components/PageBase";
 
 const styles = {

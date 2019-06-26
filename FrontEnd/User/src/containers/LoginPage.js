@@ -1,35 +1,34 @@
-import React from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Paper from 'material-ui/Paper';
-import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
-import Checkbox from 'material-ui/Checkbox';
-import {blue900, white} from 'material-ui/styles/colors';
-import PersonAdd from 'material-ui/svg-icons/social/person-add';
-import Help from 'material-ui/svg-icons/action/help';
-import TextField from 'material-ui/TextField';
-import {Link} from 'react-router';
-import ThemeDefault from '../theme-default';
+import React from "react";
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import Paper from "material-ui/Paper";
+import RaisedButton from "material-ui/RaisedButton";
+import FlatButton from "material-ui/FlatButton";
+import Checkbox from "material-ui/Checkbox";
+import { blue900, white } from "material-ui/styles/colors";
+import PersonAdd from "material-ui/svg-icons/social/person-add";
+import Help from "material-ui/svg-icons/action/help";
+import TextField from "material-ui/TextField";
+import { Link } from "react-router";
+import ThemeDefault from "../theme-default";
 
 const LoginPage = () => {
-
   const styles = {
     loginContainer: {
       minWidth: 320,
       maxWidth: 400,
-      height: 'auto',
-      position: 'absolute',
-      top: '20%',
+      height: "auto",
+      position: "absolute",
+      top: "20%",
       left: 0,
       right: 0,
-      margin: 'auto'
+      margin: "auto"
     },
     paper: {
       padding: 20,
-      overflow: 'auto'
+      overflow: "auto"
     },
     buttonsDiv: {
-      textAlign: 'center',
+      textAlign: "center",
       padding: 10
     },
     flatButton: {
@@ -37,7 +36,7 @@ const LoginPage = () => {
     },
     checkRemember: {
       style: {
-        float: 'left',
+        float: "left",
         maxWidth: 180,
         paddingTop: 5
       },
@@ -51,10 +50,10 @@ const LoginPage = () => {
       }
     },
     loginBtn: {
-      float: 'right'
+      float: "right"
     },
     btn: {
-      background: '#4f81e9',
+      background: "#4f81e9",
       color: white,
       padding: 7,
       borderRadius: 2,
@@ -63,16 +62,14 @@ const LoginPage = () => {
     },
     btnSpan: {
       marginLeft: 5
-    },
+    }
   };
 
   return (
     <MuiThemeProvider muiTheme={ThemeDefault}>
       <div>
         <div style={styles.loginContainer}>
-
           <Paper style={styles.paper}>
-
             <form>
               <TextField
                 hintText="E-mail"
@@ -80,7 +77,7 @@ const LoginPage = () => {
                 fullWidth={true}
               />
               <TextField
-                hintText="Password"
+                hintText="Senha"
                 floatingLabelText="Password"
                 fullWidth={true}
                 type="password"
@@ -95,9 +92,11 @@ const LoginPage = () => {
                 />
 
                 <Link to="/">
-                  <RaisedButton label="Login"
-                                primary={true}
-                                style={styles.loginBtn}/>
+                  <RaisedButton
+                    label="Login"
+                    primary={true}
+                    style={styles.loginBtn}
+                  />
                 </Link>
               </div>
             </form>
@@ -112,7 +111,7 @@ const LoginPage = () => {
             />
 
             <FlatButton
-              label="Forgot Password?"
+              label="Esqueceu a Senha?"
               href="/"
               style={styles.flatButton}
               icon={<Help />}
