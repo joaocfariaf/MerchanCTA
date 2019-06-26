@@ -11,7 +11,7 @@ import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import {grey400, white} from 'material-ui/styles/colors';
 import {typography} from 'material-ui/styles';
-import Wallpaper from 'material-ui/svg-icons/device/wallpaper';
+import Wallpaper from 'material-ui/svg-icons/action/done';
 
 const RecentlyProducts = props => {
   const styles = {

@@ -4,7 +4,7 @@ import { spacing, typography } from "material-ui/styles";
 import { white } from "material-ui/styles/colors";
 import MenuItem from "material-ui/MenuItem";
 import { Link } from "react-router";
-import Avatar from "material-ui/Avatar";
+import Avatar from "material-ui/svg-icons/action/account-box";
 
 const LeftDrawer = props => {
   let { navDrawerOpen } = props;
@@ -28,13 +28,13 @@ const LeftDrawer = props => {
       div: {
         padding: "15px 0 20px 15px",
         backgroundImage: "url(" + require("../images/CEU.png") + ")",
-        height: 45
+        height: 20
       },
       icon: {
         float: "left",
         display: "block",
         marginRight: 15,
-        boxShadow: "0px 0px 0px 8px rgba(0,0,0,0.2)"
+        boxShadow: "0px 0px 0px 0px rgba(0,0,0,0.2)"
       },
       span: {
         paddingTop: 12,
@@ -52,7 +52,7 @@ const LeftDrawer = props => {
       <div style={styles.avatar.div}>
         <Avatar
           src="http://www.material-ui.com/images/uxceo-126.jpg"
-          size={50}
+          size={300}
           style={styles.avatar.icon}
         />
         <span style={styles.avatar.span}>{props.username}</span>
