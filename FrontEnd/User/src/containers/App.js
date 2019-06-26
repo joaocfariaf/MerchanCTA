@@ -4,18 +4,19 @@ import Header from '../components/Header';
 import LeftDrawer from '../components/LeftDrawer';
 import withWidth, {LARGE, SMALL} from 'material-ui/utils/withWidth';
 import ThemeDefault from '../theme-default';
-import Data from '../data';
+import { menus } from '../data';
 
 class App extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
+      menus: menus,
       navDrawerOpen: false
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentDidReceiveProps(nextProps) {
     if (this.props.width !== nextProps.width) {
       this.setState({navDrawerOpen: nextProps.width === LARGE});
     }
@@ -48,7 +49,7 @@ class App extends React.Component {
                   handleChangeRequestNavDrawer={this.handleChangeRequestNavDrawer.bind(this)}/>
 
             <LeftDrawer navDrawerOpen={navDrawerOpen}
-                        menus={Data.menus}
+                        menus={this.state.menus}
                         username="User Admin"/>
 
             <div style={styles.container}>

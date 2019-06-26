@@ -42,8 +42,8 @@ const RecentlyProducts = props => {
           <div key={item.title}>
             <ListItem
               leftAvatar={<Avatar icon={<Wallpaper />} />}
-              primaryText={item.title}
-              secondaryText={item.text}
+              primaryText={item.name}
+              secondaryText={item.description}
               rightIconButton={rightIconMenu}
             />
             <Divider inset={false} />
