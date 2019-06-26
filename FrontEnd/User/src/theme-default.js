@@ -1,18 +1,18 @@
 import getMuiTheme from "material-ui/styles/getMuiTheme";
-import { blue600, grey900 } from "material-ui/styles/colors";
+import { brown100, blue600, brown900 } from "material-ui/styles/colors";
 
 const themeDefault = getMuiTheme({
   palette: {},
   appBar: {
     height: 57,
-    color: blue600
+    color: "#cc7a00"
   },
   drawer: {
     width: 230,
-    color: grey900
+    color: brown900
   },
   raisedButton: {
-    primaryColor: blue600
+    primaryColor: "#804d00"
   }
 });
 
