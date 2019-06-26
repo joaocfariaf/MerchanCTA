@@ -39,7 +39,7 @@ class DashboardPage extends React.Component {
           </div>
         </div>
         <div className="row">
-          <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 m-b-15 ">
+          <div className="col-xs-12 col-sm-12 col-md-9 col-lg-9 m-b-15 ">
             <RecentlyProducts data={this.state.recentProducts} />
           </div>
         </div>
