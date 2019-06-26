@@ -1,5 +1,5 @@
 import getMuiTheme from "material-ui/styles/getMuiTheme";
-import { brown100, blue600, brown900 } from "material-ui/styles/colors";
+import { brown900 } from "material-ui/styles/colors";
 
 const themeDefault = getMuiTheme({
   palette: {},

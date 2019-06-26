@@ -10,7 +10,9 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
+
     const  { user_email } = this.props.location.state;
+
     this.state = {
       user_email,
       menus: menus,
