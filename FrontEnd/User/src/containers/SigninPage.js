@@ -1,33 +1,33 @@
-import React from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Paper from 'material-ui/Paper';
-import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
-import Checkbox from 'material-ui/Checkbox';
-import {blue900, white} from 'material-ui/styles/colors';
-import PersonAdd from 'material-ui/svg-icons/social/person-add';
-import Help from 'material-ui/svg-icons/action/help';
-import TextField from 'material-ui/TextField';
-import {Link} from 'react-router';
-import ThemeDefault from '../theme-default';
+import React from "react";
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import Paper from "material-ui/Paper";
+import RaisedButton from "material-ui/RaisedButton";
+import FlatButton from "material-ui/FlatButton";
+import Checkbox from "material-ui/Checkbox";
+import { blue900, white } from "material-ui/styles/colors";
+import PersonAdd from "material-ui/svg-icons/social/person-add";
+import Help from "material-ui/svg-icons/action/help";
+import TextField from "material-ui/TextField";
+import { Link } from "react-router";
+import ThemeDefault from "../theme-default";
 
 const styles = {
   loginContainer: {
     minWidth: 320,
     maxWidth: 400,
-    height: 'auto',
-    position: 'absolute',
-    top: '20%',
+    height: "auto",
+    position: "absolute",
+    top: "20%",
     left: 0,
     right: 0,
-    margin: 'auto'
+    margin: "auto"
   },
   paper: {
     padding: 20,
-    overflow: 'auto'
+    overflow: "auto"
   },
   buttonsDiv: {
-    textAlign: 'center',
+    textAlign: "center",
     padding: 10
   },
   flatButton: {
@@ -35,7 +35,7 @@ const styles = {
   },
   checkRemember: {
     style: {
-      float: 'left',
+      float: "left",
       maxWidth: 180,
       paddingTop: 5
     },
@@ -49,10 +49,10 @@ const styles = {
     }
   },
   loginBtn: {
-    float: 'right'
+    float: "right"
   },
   btn: {
-    background: '#4f81e9',
+    background: "#4f81e9",
     color: white,
     padding: 7,
     borderRadius: 2,
@@ -61,54 +61,54 @@ const styles = {
   },
   btnSpan: {
     marginLeft: 5
-  },
+  }
 };
 
 class LoginPage extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.inputsInfo = {
-      email: '',
-      password: ''
-    }
+      email: "",
+      password: ""
+    };
   }
 
-  makingRequest (event) {
+  makingRequest(event) {
     event.preventDefault();
 
     console.log(this.inputsInfo);
-  
+
     const requestInfo = {
-        method:'POST',
-        body:JSON.stringify({
-          email: this.inputsInfo.email, 
-          password: this.inputsInfo.password
-        }),
-        headers:new Headers({
-            'Content-type':'application/json' 
-        })
+      method: "POST",
+      body: JSON.stringify({
+        email: this.inputsInfo.email,
+        password: this.inputsInfo.password
+      }),
+      headers: new Headers({
+        "Content-type": "application/json"
+      })
     };
 
-    fetch('https://ces22-backend.herokuapp.com/registration',requestInfo)
-        .then(response => {
-            if(response.ok) {
-                alert("Rapaz, só não deu é pouco");
-                return response.text();
-            } else {
-                throw new Error('não foi possível fazer o login');
-            }
-        })
-        .catch(error => {
-            alert("Deu errado");
-            console.log(error.message);
-            //this.setState({msg:error.message});
-        });
+    fetch("https://ces22-backend.herokuapp.com/registration", requestInfo)
+      .then(response => {
+        if (response.ok) {
+          alert("Rapaz, só não deu é pouco");
+          return response.text();
+        } else {
+          throw new Error("não foi possível fazer o login");
+        }
+      })
+      .catch(error => {
+        alert("Deu errado");
+        console.log(error.message);
+        //this.setState({msg:error.message});
+      });
   }
 
   handleChange(tag) {
     return event => {
       this.inputsInfo[tag] = event.target.value;
-    }
+    };
   }
 
   render() {
@@ -116,30 +116,30 @@ class LoginPage extends React.Component {
       <MuiThemeProvider muiTheme={ThemeDefault}>
         <div>
           <div style={styles.loginContainer}>
-
             <Paper style={styles.paper}>
-
               <form onSubmit={this.makingRequest.bind(this)}>
                 <TextField
                   hintText="E-mail"
                   floatingLabelText="E-mail"
                   fullWidth={true}
-                  onChange={this.handleChange('email')}
+                  onChange={this.handleChange("email")}
                 />
                 <TextField
                   hintText="Password"
                   floatingLabelText="Password"
                   fullWidth={true}
                   type="password"
-                  onChange={this.handleChange('password')}
+                  onChange={this.handleChange("password")}
                 />
 
                 <div>
                   <Link>
-                    <RaisedButton label="Login"
-                                  primary={true}
-                                  type="submit"
-                                  style={styles.loginBtn}/>
+                    <RaisedButton
+                      label="Login"
+                      primary={true}
+                      type="submit"
+                      style={styles.loginBtn}
+                    />
                   </Link>
                 </div>
               </form>
@@ -165,6 +165,6 @@ class LoginPage extends React.Component {
       </MuiThemeProvider>
     );
   }
-};
+}
 
 export default LoginPage;
