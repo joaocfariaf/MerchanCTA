@@ -5,7 +5,8 @@ import TextField from "material-ui/TextField";
 import { grey400 } from "material-ui/styles/colors";
 // import Divider from "material-ui/Divider";
 import PageBase from "../components/PageBase";
-
+import Select from "material-ui/SelectField";
+import MenuItem from "material-ui/MenuItem";
 const styles = {
   toggleDiv: {
     maxWidth: 300,
@@ -31,7 +32,10 @@ class FormPage extends Component {
 
     this.inputsInfo = {
       name: "",
-      description: ""
+      description: "",
+      preco: "",
+      label: "",
+      store_id: ""
     };
   }
 
@@ -43,7 +47,10 @@ class FormPage extends Component {
       method: "POST",
       body: JSON.stringify({
         name: this.inputsInfo.name,
-        description: this.inputsInfo.description
+        description: this.inputsInfo.description,
+        preco: this.inputsInfo.preco,
+        label: this.inputsInfo.label,
+        store_id: this.inputsInfo.store_id
       }),
       headers: new Headers({
         "Content-type": "application/json"
@@ -91,6 +98,7 @@ class FormPage extends Component {
             }}
             margin="normal"
             variant="filled"
+            onChange={this.handleChange("preco")}
           />
           <TextField
             hintText="Descrição"
@@ -98,6 +106,13 @@ class FormPage extends Component {
             fullWidth={true}
             onChange={this.handleChange("description")}
           />
+
+          <Select>
+            <MenuItem value={10}>Ten</MenuItem>
+            <MenuItem value={20}>Twenty</MenuItem>
+            <MenuItem value={30}>Thirty</MenuItem>
+          </Select>
+
           <div style={styles.buttons}>
             <Link to="/">
               <RaisedButton label="Cancelar" />

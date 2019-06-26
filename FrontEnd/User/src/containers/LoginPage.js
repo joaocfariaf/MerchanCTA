@@ -96,6 +96,7 @@ class LoginPage extends React.Component {
       .then(res => res.json())
       .then(json => {
         localStorage.setItem("MerchanCTA-UserTokens", json.access_token);
+        localStorage.setItem("MerchanCTA-UserId", json.user_id);
         browserHistory.push({
           pathname: "/",
           state: {
@@ -110,6 +111,12 @@ class LoginPage extends React.Component {
         });
       });
   }
+  // .catch(error => {
+  //   this.setState({
+  //     msg_user:
+  //       "Não foi possível realizar o login. Motivo: " + error.message
+  //   });
+  // });
 
   handleChange(tag) {
     return event => {

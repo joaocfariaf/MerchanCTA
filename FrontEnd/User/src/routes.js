@@ -3,7 +3,7 @@ import { Route, IndexRoute } from "react-router";
 import App from "./containers/App";
 import NotFoundPage from "./containers/NotFoundPage.js";
 import LoginPage from "./containers/LoginPage";
-// import SigninPage from "./containers/SigninPage";
+import SigninPage from "./containers/SigninPage";
 import FormPage from "./containers/FormPage";
 import TablePage from "./containers/TablePage";
 import Dashboard from "./containers/DashboardPage";
@@ -18,7 +18,7 @@ export default (
       <Route path="form" component={FormPage} />
       <Route path="table" component={TablePage} />
       <Route path="store/:store_id" component={ProductPage} />
-      {/* <Route path="SigninPage" component={SigninPage} /> */}
+      <Route path="signin" component={SigninPage} />
       <Route path="*" component={NotFoundPage} />
     </Route>
   </Route>
