@@ -7,9 +7,7 @@ import {blue900, white} from 'material-ui/styles/colors';
 import PersonAdd from 'material-ui/svg-icons/social/person-add';
 import Help from 'material-ui/svg-icons/action/help';
 import TextField from 'material-ui/TextField';
-import { Link } from 'react-router';
-import { Redirect } from 'react-router-dom';
-import {browserHistory} from  'react-router';
+import { browserHistory, Link } from  'react-router';
 import ThemeDefault from '../theme-default';
 
 const styles = {
@@ -118,7 +116,7 @@ class LoginPage extends React.Component {
 
   render() {
     return (
-      <MuiThemeProvider muiTheme={ThemeDefault}>
+      < MuiThemeProvider muiTheme={ThemeDefault}>
         <div>
           <div style={styles.loginContainer}>
 
@@ -160,17 +158,17 @@ class LoginPage extends React.Component {
               />
 
               <FlatButton
-                label="Forgot Password?"
+                label="Esqueceu a Senha?"
                 href="/"
                 style={styles.flatButton}
                 icon={<Help />}
-              />
+              /> 
             </div>
           </div>
         </div>
       </MuiThemeProvider>
     );
   }
-};
+}
 
 export default LoginPage;

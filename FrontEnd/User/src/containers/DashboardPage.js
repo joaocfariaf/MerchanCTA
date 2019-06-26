@@ -31,7 +31,7 @@ class DashboardPage extends React.Component {
           element.relatedIcon = relatedIcon;
           return element;
         });
-        console.log(withIcons[0])
+        console.log(withIcons[0]);
         this.setState({ recentProducts: withIcons });
       });
   }
@@ -55,6 +55,10 @@ class DashboardPage extends React.Component {
         </div>
         <div className="row">
           <div className="col-xs-12 col-sm-12 col-md-9 col-lg-9 m-b-15 ">
+            <RecentlyProducts data={this.state.recentProducts} />
+          </div>
+
+          <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-b-15 ">
             <RecentlyProducts data={this.state.recentProducts} />
           </div>
         </div>
