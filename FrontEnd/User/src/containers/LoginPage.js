@@ -97,6 +97,7 @@ class LoginPage extends React.Component {
         .then(res => res.json())
         .then((json) => {
           localStorage.setItem('MerchanCTA-UserTokens', json.access_token);
+          localStorage.setItem('MerchanCTA-UserId', json.user_id);
           browserHistory.push({
             pathname: '/',
             state: {
