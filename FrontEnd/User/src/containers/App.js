@@ -10,7 +10,11 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
+
+    const  { user_email } = this.props.location.state;
+
     this.state = {
+      user_email,
       menus: menus,
       navDrawerOpen: false
     };
@@ -50,7 +54,7 @@ class App extends React.Component {
 
             <LeftDrawer navDrawerOpen={navDrawerOpen}
                         menus={this.state.menus}
-                        username="User Admin"/>
+                        username={this.state.user_email}/>
 
             <div style={styles.container}>
               {this.props.children}

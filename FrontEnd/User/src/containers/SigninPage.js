@@ -3,13 +3,12 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
+import Checkbox from 'material-ui/Checkbox';
 import {blue900, white} from 'material-ui/styles/colors';
 import PersonAdd from 'material-ui/svg-icons/social/person-add';
 import Help from 'material-ui/svg-icons/action/help';
 import TextField from 'material-ui/TextField';
-import { Link } from 'react-router';
-import { Redirect } from 'react-router-dom';
-import {browserHistory} from  'react-router';
+import {Link} from 'react-router';
 import ThemeDefault from '../theme-default';
 
 const styles = {
@@ -72,9 +71,6 @@ class LoginPage extends React.Component {
       email: '',
       password: ''
     }
-    this.state = {
-      msg_user: ''
-    }
   }
 
   makingRequest (event) {
@@ -93,19 +89,19 @@ class LoginPage extends React.Component {
         })
     };
 
-    fetch('https://ces22-backend.herokuapp.com/login',requestInfo)
-        .then(res => res.json())
-        .then((json) => {
-          localStorage.setItem('MerchanCTA-UserTokens', json.access_token);
-          browserHistory.push({
-            pathname: '/',
-            state: {
-              user_email: json.user_email
+    fetch('https://ces22-backend.herokuapp.com/registration',requestInfo)
+        .then(response => {
+            if(response.ok) {
+                alert("Rapaz, só não deu é pouco");
+                return response.text();
+            } else {
+                throw new Error('não foi possível fazer o login');
             }
-          });
         })
         .catch(error => {
-            this.setState({ msg_user: 'Não foi possível realizar o login. Motivo: ' + error.message });
+            alert("Deu errado");
+            console.log(error.message);
+            //this.setState({msg:error.message});
         });
   }
 
@@ -139,7 +135,6 @@ class LoginPage extends React.Component {
                 />
 
                 <div>
-                  <span>{this.state.msg_user}</span>
                   <Link>
                     <RaisedButton label="Login"
                                   primary={true}
