@@ -18,7 +18,22 @@ class DashboardPage extends React.Component {
   componentDidMount() {
     fetch("https://ces22-backend.herokuapp.com/product", { method: "GET" })
       .then(res => res.json())
-      .then(json => this.setState({ recentProducts: json }));
+      .then(json => {
+        const withIcons = json.map((element) => {
+          let relatedIcon;
+          if (element.label === "COMIDAS")
+            relatedIcon = Coffee;
+          else if (element.label === "TRANSPORTE")
+            relatedIcon = Car;
+          else if (element.label === "OUTROS")
+            relatedIcon = Assessment;
+
+          element.relatedIcon = relatedIcon;
+          return element;
+        });
+        console.log(withIcons[0])
+        this.setState({ recentProducts: withIcons });
+      });
   }
 
   render() {
