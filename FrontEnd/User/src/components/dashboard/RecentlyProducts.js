@@ -1,4 +1,5 @@
 import React, {PropTypes} from 'react';
+import {Link} from 'react-router';
 import Avatar from 'material-ui/Avatar';
 import {List, ListItem} from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
@@ -49,6 +50,14 @@ const RecentlyProducts = (props) => {
               primaryText={item.name}
               secondaryText={item.description}
               rightIconButton={rightIconMenu}
+              containerElement={
+                <Link to={{
+                  pathname: '/store/' + item.store_id,
+                  state: {
+                    store_id: item.store_id
+                  }
+                }}
+                />}
             />
             <Divider inset={false} />
           </div>
