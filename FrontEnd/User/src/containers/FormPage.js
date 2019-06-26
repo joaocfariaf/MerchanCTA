@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router";
 import RaisedButton from "material-ui/RaisedButton";
 import TextField from "material-ui/TextField";
+import Select from "@material-ui/core/Select";
 import { grey400 } from "material-ui/styles/colors";
 //import Divider from "material-ui/Divider";
 import PageBase from "../components/PageBase";
@@ -24,14 +25,23 @@ const styles = {
     marginLeft: 5
   }
 };
-
+const stores = [
+  { label: "Gagá Store", value: 1 },
+  { label: "CopITA", value: 2 },
+  { label: "Loja do CASD", value: 3 },
+  { label: "Candy Shop", value: 4 },
+  { label: "NUNOS", value: 5 }
+];
 class FormPage extends Component {
   constructor(props) {
     super(props);
 
     this.inputsInfo = {
       name: "",
-      description: ""
+      description: "",
+      preco: "",
+      label: "",
+      store_id: ""
     };
   }
 
@@ -43,14 +53,17 @@ class FormPage extends Component {
       method: "POST",
       body: JSON.stringify({
         name: this.inputsInfo.name,
-        description: this.inputsInfo.description
+        description: this.inputsInfo.description,
+        preco: this.inputsInfo.preco,
+        store_id: this.inputsInfo.store_id,
+        label: this.inputsInfo.label
       }),
       headers: new Headers({
         "Content-type": "application/json"
       })
     };
 
-    fetch("http://localhost:5000/store", requestInfo).then(response => {
+    fetch("http://localhost:5000/product", requestInfo).then(response => {
       if (response.ok) {
         alert("Rapaz, só não deu é pouco");
         return response.text();
@@ -91,7 +104,11 @@ class FormPage extends Component {
             }}
             margin="normal"
             variant="filled"
+            onChange={this.handleChange("preco")}
           />
+
+          <Select options={stores} />
+
           <TextField
             hintText="Descrição"
             floatingLabelText="Descrição"
