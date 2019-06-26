@@ -24,7 +24,7 @@ class DashboardPage extends React.Component {
   render() {
     return (
       <div>
-        <h3 style={globalStyles.navigation}></h3>
+        <h3 style={globalStyles.navigation} />
         <div className="row">
           <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-b-15 ">
             <InfoBox Icon={Coffee} color={pink600} title="Comidas" />
