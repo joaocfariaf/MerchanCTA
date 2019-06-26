@@ -24,7 +24,15 @@ class DashboardPage extends React.Component {
   render() {
     return (
       <div>
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
         <h3 style={globalStyles.navigation}></h3>
+=======
+        <h1 style={globalStyles.navigation}>MerchanCTA</h1>
+>>>>>>> Stashed changes
+=======
+        <h1 style={globalStyles.navigation}>MerchanCTA</h1>
+>>>>>>> Stashed changes
         <div className="row">
           <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-b-15 ">
             <InfoBox Icon={Coffee} color={pink600} title="Comidas" />
