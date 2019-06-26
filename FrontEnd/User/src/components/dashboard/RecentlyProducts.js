@@ -9,26 +9,22 @@ import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
-import {grey400, cyan600, white} from 'material-ui/styles/colors';
+import {grey400, white} from 'material-ui/styles/colors';
 import {typography} from 'material-ui/styles';
 import Wallpaper from 'material-ui/svg-icons/device/wallpaper';
 
-const RecentlyProducts = (props) => {
-
+const RecentlyProducts = props => {
   const styles = {
     subheader: {
       fontSize: 24,
       fontWeight: typography.fontWeightLight,
-      backgroundColor: cyan600,
+      backgroundColor: "#804d00",
       color: white
     }
   };
 
   const iconButtonElement = (
-    <IconButton
-      touch={true}
-      tooltipPosition="bottom-left"
-    >
+    <IconButton touch={true} tooltipPosition="bottom-left">
       <MoreVertIcon color={grey400} />
     </IconButton>
   );
@@ -42,8 +38,8 @@ const RecentlyProducts = (props) => {
   return (
     <Paper>
       <List>
-        <Subheader style={styles.subheader}>Produtos Recentes</Subheader>
-        {props.data.map(item =>
+        <Subheader style={styles.subheader}>Anúncios Recentes</Subheader>
+        {props.data.map(item => (
           <div key={item.title}>
             <ListItem
               leftAvatar={<Avatar icon={<Wallpaper />} />}
@@ -57,11 +53,12 @@ const RecentlyProducts = (props) => {
                     store_id: item.store_id
                   }
                 }}
-                />}
+                />
+              }
             />
             <Divider inset={false} />
           </div>
-        )}
+        ))}
       </List>
     </Paper>
   );
