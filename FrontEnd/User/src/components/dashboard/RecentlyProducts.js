@@ -9,7 +9,7 @@ import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
-import {grey400, white} from 'material-ui/styles/colors';
+import {grey400, white, pink600} from 'material-ui/styles/colors';
 import {typography} from 'material-ui/styles';
 
 const RecentlyProducts = props => {
@@ -41,7 +41,7 @@ const RecentlyProducts = props => {
         {props.data.map(item => (
           <div key={item.title}>
             <ListItem
-              leftAvatar={<Avatar icon={<item.relatedIcon />} />}
+              leftAvatar={<Avatar backgroundColor={item.relatedIconColor} color={white} icon={<item.relatedIcon />} />}
               primaryText={item.name}
               secondaryText={item.description}
               rightIconButton={rightIconMenu}

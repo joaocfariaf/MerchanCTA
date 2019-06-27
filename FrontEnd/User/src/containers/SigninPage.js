@@ -25,7 +25,7 @@ const styles = {
   }
 };
 
-class SigninPage extends Component {
+class SigninPage extends React.Component {
   constructor(props) {
     super(props);
 
