@@ -14,6 +14,12 @@ class InfoBox extends React.Component {
         textAlign: 'center',
         height: 80
       },
+      number: {
+        display: 'block',
+        fontWeight: typography.fontWeightMedium,
+        fontSize: 18,
+        color: grey800
+      },
       text: {
         fontSize: 30,
         fontWeight: typography.fontWeightLight,
@@ -44,8 +50,8 @@ class InfoBox extends React.Component {
         </span>
 
         <div style={styles.content}>
-          <span style={styles.text}> <p>  </p> {title}</span>
-        </div>
+          <span style={styles.text}>{title}</span>
+        </div>  
       </Paper>
       );
   }

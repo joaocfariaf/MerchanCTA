@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router";
 import RaisedButton from "material-ui/RaisedButton";
 import TextField from "material-ui/TextField";
+//import Input from "material-ui/Input"
 import { grey400 } from "material-ui/styles/colors";
 import PageBase from "../components/PageBase";
 import Select from "material-ui/SelectField";
@@ -39,18 +40,19 @@ class FormPage extends Component {
 
     this.state = {
       stores: [],
-      value: "",
-      inputsInfo: {
-        name: "",
-        description: "",
-        preco: "",
-        label: "",
-        store_id: ""
-      }
+      name: "",
+      description: "",
+      preco: "",
+      label: "",
+      store_id: ""
     };
   }
 
   componentDidMount() {
+    console.log(
+      "https://ces22-backend.herokuapp.com/getStores/" +
+        localStorage.getItem("MerchanCTA-UserId")
+    );
     fetch(
       "https://ces22-backend.herokuapp.com/getStores/" +
         localStorage.getItem("MerchanCTA-UserId"),
@@ -64,16 +66,15 @@ class FormPage extends Component {
 
   makingRequest(event) {
     event.preventDefault();
-    // console.log(this.inputsInfo);
 
     const requestInfo = {
       method: "POST",
       body: JSON.stringify({
-        name: this.state.inputsInfo.name,
-        description: this.state.inputsInfo.description,
-        preco: this.state.inputsInfo.preco,
-        store_id: this.state.inputsInfo.store_id,
-        label: this.state.inputsInfo.label
+        name: this.state.name,
+        description: this.state.description,
+        preco: this.state.preco,
+        store_id: this.state.store_id,
+        label: this.state.label
       }),
       headers: new Headers({
         "Content-type": "application/json"
@@ -81,14 +82,16 @@ class FormPage extends Component {
       //this.setState({ value: store_id }),
     };
 
-    fetch("http://localhost:5000/product", requestInfo).then(response => {
-      if (response.ok) {
-        alert("Rapaz, só não deu é pouco");
-        return response.text();
-      } else {
-        throw new Error("não foi possível fazer o login");
+    fetch("https://ces22-backend.herokuapp.com/product", requestInfo).then(
+      response => {
+        if (response.ok) {
+          alert("Rapaz, só não deu é pouco");
+          return response.text();
+        } else {
+          throw new Error("não foi possível fazer o login");
+        }
       }
-    });
+    );
     // .catch(error => {
     //   alert("Deu errado");
     //   // console.log(error.message);
@@ -96,9 +99,10 @@ class FormPage extends Component {
     // });
   }
 
-  handleChange() {
+  handleChange(tag) {
     return event => {
-      this.setState({ inputsInfo });
+      console.log(event.target)
+      this.setState({ tag: event.target.value });
     };
   }
 
@@ -126,16 +130,12 @@ class FormPage extends Component {
           />
           <div>
             <Select
-              value={this.state.inputsInfo.store_id}
               onChange={this.handleChange("store_id")}
               floatingLabelText="Selecione a loja"
+              //input={<Input name="store_id" />}
             >
               {this.state.stores.map(store => (
-                <MenuItem
-                  key={store.id}
-                  value={store.id}
-                  primaryText={store.name}
-                />
+                <MenuItem key={store.id} value={store.id}>{store.name}</MenuItem>
               ))}
             </Select>
           </div>
@@ -151,12 +151,14 @@ class FormPage extends Component {
               <RaisedButton label="Cancelar" />
             </Link>
 
-            <RaisedButton
-              label="Salvar"
-              style={styles.saveButton}
-              type="submit"
-              primary={true}
-            />
+            <Link to="/form">
+              <RaisedButton
+                label="Salvar"
+                style={styles.saveButton}
+                type="submit"
+                primary={true}
+              />
+            </Link>
           </div>
         </form>
       </PageBase>

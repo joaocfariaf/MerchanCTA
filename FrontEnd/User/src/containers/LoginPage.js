@@ -5,7 +5,6 @@ import RaisedButton from "material-ui/RaisedButton";
 import FlatButton from "material-ui/FlatButton";
 import { blue900, white } from "material-ui/styles/colors";
 import PersonAdd from "material-ui/svg-icons/social/person-add";
-import Help from "material-ui/svg-icons/action/help";
 import TextField from "material-ui/TextField";
 import { browserHistory, Link } from "react-router";
 import ThemeDefault from "../theme-default";
@@ -116,12 +115,6 @@ class LoginPage extends Component {
         });
       });
   }
-  // .catch(error => {
-  //   this.setState({
-  //     msg_user:
-  //       "Não foi possível realizar o login. Motivo: " + error.message
-  //   });
-  // });
 
   handleChange(tag) {
     return event => {
@@ -167,7 +160,7 @@ class LoginPage extends Component {
             <div style={styles.buttonsDiv}>
               <FlatButton
                 label="Register"
-                href="/SigninPage.js"
+                href="/signin"
                 style={styles.flatButton}
                 icon={<PersonAdd />}
               />
