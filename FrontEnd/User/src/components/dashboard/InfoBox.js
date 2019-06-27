@@ -14,12 +14,6 @@ class InfoBox extends React.Component {
         textAlign: 'center',
         height: 80
       },
-      number: {
-        display: 'block',
-        fontWeight: typography.fontWeightMedium,
-        fontSize: 18,
-        color: grey800
-      },
       text: {
         fontSize: 30,
         fontWeight: typography.fontWeightLight,
@@ -51,7 +45,6 @@ class InfoBox extends React.Component {
 
         <div style={styles.content}>
           <span style={styles.text}>{title}</span>
-          <span style={styles.number}>{value}</span>
         </div>  
       </Paper>
       );
@@ -62,7 +55,6 @@ InfoBox.propTypes = {
   Icon: PropTypes.any, // eslint-disable-line
   color: PropTypes.string,
   title: PropTypes.string,
-  value: PropTypes.string
 };
 
 export default InfoBox;
