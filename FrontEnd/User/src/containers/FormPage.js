@@ -26,27 +26,27 @@ const styles = {
     marginLeft: 5
   }
 };
-const stores = [
-  { label: "Gagá Store", value: 1 },
-  { label: "CopITA", value: 2 },
-  { label: "Loja do CASD", value: 3 },
-  { label: "Candy Shop", value: 4 },
-  { label: "NUNOS", value: 5 }
-];
+// const stores = [
+//   { label: "Gagá Store", value: 1 },
+//   { label: "CopITA", value: 2 },
+//   { label: "Loja do CASD", value: 3 },
+//   { label: "Candy Shop", value: 4 },
+//   { label: "NUNOS", value: 5 }
+// ];
 class FormPage extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      stores: []
-    };
-
-    this.inputsInfo = {
-      name: "",
-      description: "",
-      preco: "",
-      label: "",
-      store_id: ""
+      stores: [],
+      value: "",
+      inputsInfo: {
+        name: "",
+        description: "",
+        preco: "",
+        label: "",
+        store_id: ""
+      }
     };
   }
 
@@ -69,15 +69,16 @@ class FormPage extends Component {
     const requestInfo = {
       method: "POST",
       body: JSON.stringify({
-        name: this.inputsInfo.name,
-        description: this.inputsInfo.description,
-        preco: this.inputsInfo.preco,
-        store_id: this.inputsInfo.store_id,
-        label: this.inputsInfo.label
+        name: this.state.inputsInfo.name,
+        description: this.state.inputsInfo.description,
+        preco: this.state.inputsInfo.preco,
+        store_id: this.state.inputsInfo.store_id,
+        label: this.state.inputsInfo.label
       }),
       headers: new Headers({
         "Content-type": "application/json"
       })
+      //this.setState({ value: store_id }),
     };
 
     fetch("http://localhost:5000/product", requestInfo).then(response => {
@@ -95,9 +96,9 @@ class FormPage extends Component {
     // });
   }
 
-  handleChange(tag) {
+  handleChange() {
     return event => {
-      this.inputsInfo[tag] = event.target.value;
+      this.setState({ inputsInfo });
     };
   }
 
@@ -125,15 +126,15 @@ class FormPage extends Component {
           />
           <div>
             <Select
-              value={this.inputsInfo.store_id}
+              value={this.state.inputsInfo.store_id}
               onChange={this.handleChange("store_id")}
               floatingLabelText="Selecione a loja"
             >
               {this.state.stores.map(store => (
                 <MenuItem
-                  key={store.value}
-                  value={store.value}
-                  primaryText={store.label}
+                  key={store.id}
+                  value={store.id}
+                  primaryText={store.name}
                 />
               ))}
             </Select>
