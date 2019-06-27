@@ -1,6 +1,6 @@
 import React from "react";
 import Assessment from "material-ui/svg-icons/action/home";
-import GridOn from "material-ui/svg-icons/image/grid-on";
+import ProdList from "material-ui/svg-icons/action/view-list";
 import PermIdentity from "material-ui/svg-icons/action/perm-identity";
 import Grocery from "material-ui/svg-icons/maps/local-grocery-store";
 import Add from "material-ui/svg-icons/av/playlist-add";
@@ -21,7 +21,7 @@ const tablePage = {
 const menus = [
   { text: "Página Inicial", icon: <Assessment />, link: "/" },
   { text: "Adicionar Novo Produto", icon: <Add />, link: "/form" },
-  { text: "Table Page", icon: <GridOn />, link: "/table" },
+  { text: "Seus Produtos", icon: <ProdList />, link: "/table" },
   { text: "Adicionar Loja", icon: <Grocery />, link: "/addLoja" }
 
   // { text: 'Login Page', icon: <PermIdentity/>, link: '/login' }

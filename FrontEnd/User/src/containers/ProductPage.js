@@ -1,8 +1,8 @@
 import React from 'react';
 import {pink600, purple600, orange600} from 'material-ui/styles/colors';
-import Assessment from 'material-ui/svg-icons/action/card-giftcard';
-import Car from 'material-ui/svg-icons/maps/directions-car';
-import Coffee from 'material-ui/svg-icons/maps/local-cafe';
+import Assessment from "material-ui/svg-icons/action/card-giftcard";
+import Car from "material-ui/svg-icons/maps/directions-car";
+import Coffee from "material-ui/svg-icons/maps/local-cafe";
 import InfoBox from '../components/dashboard/InfoBox';
 import RecentlyProducts from '../components/dashboard/RecentlyProducts';
 import globalStyles from '../styles';
@@ -21,10 +21,37 @@ class ProductPage extends React.Component {
 
   componentDidMount() {
     const { store_id } = this.props.location.state;
+    console.log(store_id)
     const url = 'https://ces22-backend.herokuapp.com/store/' + store_id;
     fetch(url, { method: 'GET' })
       .then(res => res.json())
-      .then(json => this.setState({ storeInfo: json }));
+      .then(json => {
+        const productsWithIcons = json.products.map((element) => {
+          let relatedIcon;
+          let relatedIconColor;
+          if (element.label === "COMIDAS") 
+          {
+            relatedIcon = Coffee;
+            relatedIconColor = pink600;
+          }
+          else if (element.label === "TRANSPORTE")
+          {
+            relatedIcon = Car;
+            relatedIconColor = orange600;
+          }
+          else if (element.label === "OUTROS")
+          {
+            relatedIcon = Assessment;
+            relatedIconColor = purple600;
+          }
+
+          element.relatedIcon = relatedIcon;
+          element.relatedIconColor = relatedIconColor;
+          return element;
+        });
+        json.products = productsWithIcons;
+        this.setState({ storeInfo: json });
+      });
   }
 
   render() {

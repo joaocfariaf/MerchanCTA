@@ -5,7 +5,6 @@ import RaisedButton from "material-ui/RaisedButton";
 import FlatButton from "material-ui/FlatButton";
 import { blue900, white } from "material-ui/styles/colors";
 import PersonAdd from "material-ui/svg-icons/social/person-add";
-import Help from "material-ui/svg-icons/action/help";
 import TextField from "material-ui/TextField";
 import { browserHistory, Link } from "react-router";
 import ThemeDefault from "../theme-default";
@@ -66,6 +65,11 @@ const styles = {
 class LoginPage extends Component {
   constructor(props) {
     super(props);
+
+    localStorage.removeItem('MerchanCTA-UserTokens');
+    localStorage.removeItem('MerchanCTA-UserEmail');
+    localStorage.removeItem('MerchanCTA-UserId');
+
     this.inputsInfo = {
       email: "",
       password: ""
@@ -96,12 +100,19 @@ class LoginPage extends Component {
       .then(json => {
         localStorage.setItem("MerchanCTA-UserTokens", json.access_token);
         localStorage.setItem("MerchanCTA-UserId", json.user_id);
-        browserHistory.push({
-          pathname: "/",
-          state: {
-            user_email: json.user_email
-          }
-        });
+        localStorage.setItem("MerchanCTA-UserEmail", json.user_email);
+        if (json.user_email != undefined )
+          browserHistory.push({
+            pathname: "/",
+            state: {
+              user_email: json.user_email
+            }
+          });
+        else
+          this.setState({
+            msg_user:
+              "Não foi possível realizar o login. Motivo: " + json.message
+          });
       })
       .catch(error => {
         this.setState({
@@ -110,12 +121,6 @@ class LoginPage extends Component {
         });
       });
   }
-  // .catch(error => {
-  //   this.setState({
-  //     msg_user:
-  //       "Não foi possível realizar o login. Motivo: " + error.message
-  //   });
-  // });
 
   handleChange(tag) {
     return event => {
@@ -164,13 +169,6 @@ class LoginPage extends Component {
                 href="/signin"
                 style={styles.flatButton}
                 icon={<PersonAdd />}
-              />
-
-              <FlatButton
-                label="Esqueceu a Senha?"
-                href="/"
-                style={styles.flatButton}
-                icon={<Help />}
               />
             </div>
           </div>
