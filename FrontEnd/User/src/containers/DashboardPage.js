@@ -84,7 +84,7 @@ class DashboardPage extends React.Component {
       });
   }
 
-  clickComidas(event){
+  clickComidas(){
     console.log(this.state.clicked)
     const new_clicked = {
       comidas: false,
@@ -102,7 +102,7 @@ class DashboardPage extends React.Component {
     }
   }
 
-  clickTransporte(event){
+  clickTransporte(){
     console.log(this.state.clicked)
     const new_clicked = {
       comidas: false,
@@ -120,7 +120,7 @@ class DashboardPage extends React.Component {
     }
   }
 
-  clickOutros(event){
+  clickOutros(){
     console.log(this.state.clicked)
     const new_clicked = {
       comidas: false,
