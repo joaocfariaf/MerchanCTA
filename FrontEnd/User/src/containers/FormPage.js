@@ -6,7 +6,8 @@ import TextField from "material-ui/TextField";
 import { grey400 } from "material-ui/styles/colors";
 //import Divider from "material-ui/Divider";
 import PageBase from "../components/PageBase";
-
+import Select from "material-ui/SelectField";
+import MenuItem from "material-ui/MenuItem";
 const styles = {
   toggleDiv: {
     maxWidth: 300,
@@ -115,6 +116,13 @@ class FormPage extends Component {
             fullWidth={true}
             onChange={this.handleChange("description")}
           />
+
+          <Select>
+            <MenuItem value={10}>Ten</MenuItem>
+            <MenuItem value={20}>Twenty</MenuItem>
+            <MenuItem value={30}>Thirty</MenuItem>
+          </Select>
+
           <div style={styles.buttons}>
             <Link to="/">
               <RaisedButton label="Cancelar" />

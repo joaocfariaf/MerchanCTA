@@ -25,7 +25,7 @@ const styles = {
   }
 };
 
-class FormPage extends Component {
+class LoginPage extends React.Component {
   constructor(props) {
     super(props);
 
@@ -50,19 +50,20 @@ class FormPage extends Component {
       })
     };
 
-    fetch("http://localhost:5000/store", requestInfo).then(response => {
-      if (response.ok) {
-        alert("Rapaz, só não deu é pouco");
-        return response.text();
-      } else {
-        throw new Error("não foi possível fazer o login");
-      }
-    });
-    // .catch(error => {
-    //   alert("Deu errado");
-    //   // console.log(error.message);
-    //   //this.setState({msg:error.message});
-    // });
+    fetch("https://ces22-backend.herokuapp.com/registration", requestInfo)
+      .then(response => {
+        if (response.ok) {
+          alert("Rapaz, só não deu é pouco");
+          return response.text();
+        } else {
+          throw new Error("não foi possível fazer o login");
+        }
+      })
+      .catch(error => {
+        alert("Deu errado");
+        console.log(error.message);
+        //this.setState({msg:error.message});
+      });
   }
 
   handleChange(tag) {

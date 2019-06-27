@@ -12,13 +12,13 @@ import ProductPage from "./containers/ProductPage";
 export default (
   <Route>
     <Route path="login" component={LoginPage} />
-    <Route path="signin" component={SigninPage} />
     <Route path="/" component={App}>
       <IndexRoute component={Dashboard} />
       <Route path="dashboard" component={Dashboard} />
       <Route path="form" component={FormPage} />
       <Route path="table" component={TablePage} />
       <Route path="store/:store_id" component={ProductPage} />
+      <Route path="signin" component={SigninPage} />
       <Route path="*" component={NotFoundPage} />
     </Route>
   </Route>
