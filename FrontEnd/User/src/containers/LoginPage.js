@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import Paper from "material-ui/Paper";
 import RaisedButton from "material-ui/RaisedButton";
@@ -63,7 +63,7 @@ const styles = {
   }
 };
 
-class LoginPage extends React.Component {
+class LoginPage extends Component {
   constructor(props) {
     super(props);
     this.inputsInfo = {
