@@ -6,6 +6,8 @@ import { grey400 } from "material-ui/styles/colors";
 import PageBase from "../components/PageBase";
 import Select from "material-ui/SelectField";
 import MenuItem from "material-ui/MenuItem";
+
+//import InputLabel from "material-ui/InputLabel";
 const styles = {
   toggleDiv: {
     maxWidth: 300,
@@ -35,6 +37,10 @@ class FormPage extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      stores: []
+    };
+
     this.inputsInfo = {
       name: "",
       description: "",
@@ -42,6 +48,18 @@ class FormPage extends Component {
       label: "",
       store_id: ""
     };
+  }
+
+  componentDidMount() {
+    fetch(
+      "https://ces22-backend.herokuapp.com/getStores/" +
+        localStorage.getItem("MerchanCTA-UserId"),
+      { method: "GET" }
+    )
+      .then(res => res.json())
+      .then(json => {
+        this.setState({ stores: json });
+      });
   }
 
   makingRequest(event) {
@@ -105,21 +123,27 @@ class FormPage extends Component {
             variant="filled"
             onChange={this.handleChange("preco")}
           />
-
-          <Select options={stores} />
-
+          <div>
+            <Select
+              value={this.inputsInfo.store_id}
+              onChange={this.handleChange("store_id")}
+              floatingLabelText="Selecione a loja"
+            >
+              {this.state.stores.map(store => (
+                <MenuItem
+                  key={store.value}
+                  value={store.value}
+                  primaryText={store.label}
+                />
+              ))}
+            </Select>
+          </div>
           <TextField
             hintText="Descrição"
             floatingLabelText="Descrição"
             fullWidth={true}
             onChange={this.handleChange("description")}
           />
-
-          <Select>
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
-          </Select>
 
           <div style={styles.buttons}>
             <Link to="/">
