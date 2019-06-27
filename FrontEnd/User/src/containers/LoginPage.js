@@ -65,6 +65,11 @@ const styles = {
 class LoginPage extends Component {
   constructor(props) {
     super(props);
+
+    localStorage.removeItem('MerchanCTA-UserTokens');
+    localStorage.removeItem('MerchanCTA-UserEmail');
+    localStorage.removeItem('MerchanCTA-UserId');
+
     this.inputsInfo = {
       email: "",
       password: ""
@@ -95,6 +100,7 @@ class LoginPage extends Component {
       .then(json => {
         localStorage.setItem("MerchanCTA-UserTokens", json.access_token);
         localStorage.setItem("MerchanCTA-UserId", json.user_id);
+        localStorage.setItem("MerchanCTA-UserEmail", json.user_email);
         if (json.user_email != undefined )
           browserHistory.push({
             pathname: "/",
