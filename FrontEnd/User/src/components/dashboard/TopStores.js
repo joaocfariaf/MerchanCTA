@@ -37,7 +37,7 @@ const TopStores = props => {
   return (
     <Paper>
       <List>
-        <Subheader style={styles.subheader}>Anúncios Recentes</Subheader>
+        <Subheader style={styles.subheader}>As Lojas mais bem avaliadas</Subheader>
         {props.data.map(item => (
           <div key={item.title}>
             <ListItem

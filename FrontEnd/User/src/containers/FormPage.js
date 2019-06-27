@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router";
 import RaisedButton from "material-ui/RaisedButton";
 import TextField from "material-ui/TextField";
-import Input from "material-ui/Input"
+//import Input from "material-ui/Input"
 import { grey400 } from "material-ui/styles/colors";
 import PageBase from "../components/PageBase";
 import Select from "material-ui/SelectField";
@@ -132,7 +132,7 @@ class FormPage extends Component {
             <Select
               onChange={this.handleChange("store_id")}
               floatingLabelText="Selecione a loja"
-              input={<Input name="store_id" />}
+              //input={<Input name="store_id" />}
             >
               {this.state.stores.map(store => (
                 <MenuItem key={store.id} value={store.id}>{store.name}</MenuItem>

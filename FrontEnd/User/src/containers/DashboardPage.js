@@ -6,7 +6,9 @@ import Coffee from "material-ui/svg-icons/maps/local-cafe";
 import Store from 'material-ui/svg-icons/action/store'
 import InfoBox from "../components/dashboard/InfoBox";
 import RecentlyProducts from "../components/dashboard/RecentlyProducts";
+import TopStores from "../components/dashboard/TopStores"
 import globalStyles from "../styles";
+// import HeaderLace from "../components/dashboard/HeaderLace";
 
 class DashboardPage extends React.Component {
   constructor(props) {
@@ -68,25 +70,32 @@ class DashboardPage extends React.Component {
       <div>
         <h3 style={globalStyles.navigation} />
         <div className="row">
-          <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-b-15 ">
+          <div className="col-xs-12 col-sm-6 col-md-4 col-lg-4 m-b-15">
+            {/* <HeaderLace title="PAPAPAP"/> */}
+          </div>
+        </div>
+        
+        <div className="row">
+          <div className="col-xs-12 col-sm-6 col-md-4 col-lg-4 m-b-15">
             <InfoBox Icon={Coffee} color={pink600} title="Comidas" />
           </div>
 
-          <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-b-15 ">
+          <div className="col-xs-12 col-sm-6 col-md-4 col-lg-4 m-b-15 ">
             <InfoBox Icon={Car} color={orange600} title="Transporte" />
           </div>
 
-          <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-b-15 ">
+          <div className="col-xs-12 col-sm-6 col-md-4 col-lg-4 m-b-15 ">
             <InfoBox Icon={Assessment} color={purple600} title="Outros" />
           </div>
         </div>
+
         <div className="row">
-          <div className="col-xs-12 col-sm-12 col-md-9 col-lg-9 m-b-15 ">
-            <RecentlyProducts data={this.state.recentProducts.sort((a,b)=> b.id - a.id).slice(0,10)} />
+          <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8 m-b-15 ">
+            <TopStores data={this.state.topStores.sort((a,b)=> b.rating - a.rating).slice(0,10)} />
           </div>
 
-          <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-b-15 ">
-            <RecentlyProducts data={this.state.topStores.sort((a,b)=> b.rating - a.rating).slice(0,10)} />
+          <div className="col-xs-12 col-sm-6 col-md-4 col-lg-4 m-b-15 ">
+            <RecentlyProducts data={this.state.recentProducts.sort((a,b)=> b.id - a.id).slice(0,10)} />            
           </div>
         </div>
       </div>
