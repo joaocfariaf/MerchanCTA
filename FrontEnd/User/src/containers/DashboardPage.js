@@ -8,6 +8,7 @@ import InfoBox from "../components/dashboard/InfoBox";
 import RecentlyProducts from "../components/dashboard/RecentlyProducts";
 import globalStyles from "../styles";
 import HeaderLace from "../components/dashboard/HeaderLace";
+import TopStores from "../components/dashboard/TopStores";
 
 class DashboardPage extends React.Component {
   constructor(props) {
