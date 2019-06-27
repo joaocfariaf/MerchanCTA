@@ -11,6 +11,8 @@ import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import {grey400, white, pink600} from 'material-ui/styles/colors';
 import {typography} from 'material-ui/styles';
+import StarRatingComponent from 'react-star-rating-component';
+import Star from './Star';
 
 const TopStores = props => {
   const styles = {
@@ -37,14 +39,13 @@ const TopStores = props => {
   return (
     <Paper>
       <List>
-        <Subheader style={styles.subheader}>Anúncios Recentes</Subheader>
+        <Subheader style={styles.subheader}>As Lojas mais bem avaliadas</Subheader>
         {props.data.map(item => (
           <div key={item.title}>
             <ListItem
               leftAvatar={<Avatar backgroundColor={item.relatedIconColor} color={white} icon={<item.relatedIcon />} />}
               primaryText={item.name}
               secondaryText={item.description}
-              rightIconButton={rightIconMenu}
               containerElement={
                 <Link to={{
                   pathname: '/store/' + item.store_id,
@@ -55,7 +56,10 @@ const TopStores = props => {
                 />
               }
             />
-            <Divider inset={false} />
+            <div className="col-xs-12 col-sm-6 col-md-4 col-lg-4 m-b-15 ">
+              <Star />
+            </div>
+            <Divider inset={true} />
           </div>
         ))}
       </List>
