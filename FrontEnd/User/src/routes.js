@@ -8,6 +8,7 @@ import FormPage from "./containers/FormPage";
 import TablePage from "./containers/TablePage";
 import Dashboard from "./containers/DashboardPage";
 import ProductPage from "./containers/ProductPage";
+import AddStore from "./containers/AddStore.js";
 
 export default (
   <Route>
@@ -18,6 +19,7 @@ export default (
       <Route path="dashboard" component={Dashboard} />
       <Route path="form" component={FormPage} />
       <Route path="table" component={TablePage} />
+      <Route path="addLoja" component={AddStore} />
       <Route path="store/:store_id" component={ProductPage} />
       <Route path="*" component={NotFoundPage} />
     </Route>

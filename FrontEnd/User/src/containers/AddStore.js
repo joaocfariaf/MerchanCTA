@@ -1,3 +1,5 @@
+/**********  AINDA  PRECISA EDITAR*************************/
+
 import React, { Component } from "react";
 import { Link } from "react-router";
 import RaisedButton from "material-ui/RaisedButton";
@@ -33,7 +35,7 @@ const styles = {
 //   { label: "Candy Shop", value: 4 },
 //   { label: "NUNOS", value: 5 }
 // ];
-class FormPage extends Component {
+class AddStore extends Component {
   constructor(props) {
     super(props);
 
@@ -71,9 +73,7 @@ class FormPage extends Component {
       body: JSON.stringify({
         name: this.state.name,
         description: this.state.description,
-        preco: this.state.preco,
-        store_id: this.state.store_id,
-        label: this.state.label
+        endereco: this.state.endereco
       }),
       headers: new Headers({
         "Content-type": "application/json"
@@ -81,7 +81,7 @@ class FormPage extends Component {
       //this.setState({ value: store_id }),
     };
 
-    fetch("https://ces22-backend.herokuapp.com/product", requestInfo).then(
+    fetch("https://ces22-backend.herokuapp.com/getStores", requestInfo).then(
       response => {
         if (response.ok) {
           alert("Rapaz, só não deu é pouco");
@@ -106,7 +106,7 @@ class FormPage extends Component {
 
   render() {
     return (
-      <PageBase title="Adicionar Produto" navigation="Admin / Forms">
+      <PageBase title="Adicionar Loja" navigation="Admin / Forms">
         <form onSubmit={this.makingRequest.bind(this)}>
           <TextField
             hintText="Nome"
@@ -115,32 +115,17 @@ class FormPage extends Component {
             onChange={this.handleChange("name")}
           />
           <TextField
-            id="filled-number"
-            label="Number"
-            floatingLabelText="Preço"
-            hintText="Exemplo: 10.23"
+            label="Text"
+            floatingLabelText="Endereco"
+            fullWidth={true}
+            hintText="Rua H8B apt. 241, CTA, São José dos Campos - SP"
             InputLabelProps={{
               shrink: true
             }}
             margin="normal"
             variant="filled"
-            onChange={this.handleChange("preco")}
+            onChange={this.handleChange("endereco")}
           />
-          <div>
-            <Select
-              value={this.state.store_id}
-              onChange={this.handleChange("store_id")}
-              floatingLabelText="Selecione a loja"
-            >
-              {this.state.stores.map(store => (
-                <MenuItem
-                  key={store.id}
-                  value={store.id}
-                  primaryText={store.name}
-                />
-              ))}
-            </Select>
-          </div>
           <TextField
             hintText="Descrição"
             floatingLabelText="Descrição"
@@ -168,4 +153,4 @@ class FormPage extends Component {
   }
 }
 
-export default FormPage;
+export default AddStore;
