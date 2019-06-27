@@ -96,12 +96,18 @@ class LoginPage extends Component {
       .then(json => {
         localStorage.setItem("MerchanCTA-UserTokens", json.access_token);
         localStorage.setItem("MerchanCTA-UserId", json.user_id);
-        browserHistory.push({
-          pathname: "/",
-          state: {
-            user_email: json.user_email
-          }
-        });
+        if (json.user_email != undefined )
+          browserHistory.push({
+            pathname: "/",
+            state: {
+              user_email: json.user_email
+            }
+          });
+        else
+          this.setState({
+            msg_user:
+              "Não foi possível realizar o login. Motivo: " + json.message
+          });
       })
       .catch(error => {
         this.setState({
