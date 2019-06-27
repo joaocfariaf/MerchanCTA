@@ -6,6 +6,7 @@ import Coffee from "material-ui/svg-icons/maps/local-cafe";
 import Store from 'material-ui/svg-icons/action/store'
 import InfoBox from "../components/dashboard/InfoBox";
 import RecentlyProducts from "../components/dashboard/RecentlyProducts";
+import TopStores from "../components/dashboard/TopStores";
 import globalStyles from "../styles";
 import HeaderLace from "../components/dashboard/HeaderLace";
 

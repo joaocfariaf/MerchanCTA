@@ -2,13 +2,11 @@ import React, { Component } from "react";
 import { Link } from "react-router";
 import RaisedButton from "material-ui/RaisedButton";
 import TextField from "material-ui/TextField";
-import Input from "material-ui/Input"
 import { grey400 } from "material-ui/styles/colors";
 import PageBase from "../components/PageBase";
 import Select from "material-ui/SelectField";
 import MenuItem from "material-ui/MenuItem";
 
-//import InputLabel from "material-ui/InputLabel";
 const styles = {
   toggleDiv: {
     maxWidth: 300,
@@ -40,11 +38,13 @@ class FormPage extends Component {
 
     this.state = {
       stores: [],
-      name: "",
-      description: "",
-      preco: "",
-      label: "",
-      store_id: ""
+      inputsInfo: {
+        name: "",
+        description: "",
+        preco: "",
+        label: "",
+        store_id: ""
+      }
     };
   }
 
@@ -70,11 +70,11 @@ class FormPage extends Component {
     const requestInfo = {
       method: "POST",
       body: JSON.stringify({
-        name: this.state.name,
-        description: this.state.description,
-        preco: this.state.preco,
-        store_id: this.state.store_id,
-        label: this.state.label
+        name: this.state.inputsInfo['name'],
+        description: this.state.inputsInfo['description'],
+        preco: this.state.inputsInfo['preco'],
+        store_id: this.state.inputsInfo['store_id'],
+        label: this.state.inputsInfo['label']
       }),
       headers: new Headers({
         "Content-type": "application/json"
@@ -82,10 +82,12 @@ class FormPage extends Component {
       //this.setState({ value: store_id }),
     };
 
+    console.log(requestInfo)
+
     fetch("https://ces22-backend.herokuapp.com/product", requestInfo).then(
       response => {
         if (response.ok) {
-          alert("Rapaz, só não deu é pouco");
+          alert("Item inserido com sucesso!");
           return response.text();
         } else {
           throw new Error("não foi possível fazer o login");
@@ -101,8 +103,9 @@ class FormPage extends Component {
 
   handleChange(tag) {
     return event => {
-      console.log(event.target)
-      this.setState({ tag: event.target.value });
+      const newInputsInfo = this.state.inputsInfo;
+      newInputsInfo[tag] = event.target.value;
+      this.setState({ inputsInfo: newInputsInfo });
     };
   }
 
@@ -129,21 +132,27 @@ class FormPage extends Component {
             onChange={this.handleChange("preco")}
           />
           <div>
-            <Select
-              onChange={this.handleChange("store_id")}
-              floatingLabelText="Selecione a loja"
-              input={<Input name="store_id" />}
-            >
-              {this.state.stores.map(store => (
-                <MenuItem key={store.id} value={store.id}>{store.name}</MenuItem>
-              ))}
-            </Select>
+            {this.state.stores.map(store => (
+              <MenuItem key={store.id}>{' Id: '+store.id+' - '+store.name}</MenuItem>
+            ))}
           </div>
+          <TextField
+            hintText="Id de sua loja (lista a cima)"
+            floatingLabelText="Id"
+            fullWidth={true}
+            onChange={this.handleChange("store_id")}
+          />
           <TextField
             hintText="Descrição"
             floatingLabelText="Descrição"
             fullWidth={true}
             onChange={this.handleChange("description")}
+          />
+          <TextField
+            hintText="Escolha uma: COMIDAS, TRANSPORTE e OUTROS"
+            floatingLabelText="Label"
+            fullWidth={true}
+            onChange={this.handleChange("label")}
           />
 
           <div style={styles.buttons}>
@@ -151,7 +160,7 @@ class FormPage extends Component {
               <RaisedButton label="Cancelar" />
             </Link>
 
-            <Link to="/form">
+            <Link>
               <RaisedButton
                 label="Salvar"
                 style={styles.saveButton}
