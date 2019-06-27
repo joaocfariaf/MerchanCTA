@@ -41,7 +41,7 @@ const RecentlyProducts = props => {
         {props.data.map(item => (
           <div key={item.title}>
             <ListItem
-              leftAvatar={<Avatar Icon={item.relatedIcon} />}
+              leftAvatar={<Avatar icon={<item.relatedIcon />} />}
               primaryText={item.name}
               secondaryText={item.description}
               rightIconButton={rightIconMenu}
