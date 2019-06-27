@@ -25,7 +25,7 @@ const styles = {
   }
 };
 
-class LoginPage extends React.Component {
+class SigninPage extends Component {
   constructor(props) {
     super(props);
 
@@ -117,4 +117,4 @@ class LoginPage extends React.Component {
   }
 }
 
-export default FormPage;
+export default SigninPage;
