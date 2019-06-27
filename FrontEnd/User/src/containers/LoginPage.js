@@ -161,7 +161,7 @@ class LoginPage extends Component {
             <div style={styles.buttonsDiv}>
               <FlatButton
                 label="Register"
-                href="/SigninPage.js"
+                href="/signin"
                 style={styles.flatButton}
                 icon={<PersonAdd />}
               />

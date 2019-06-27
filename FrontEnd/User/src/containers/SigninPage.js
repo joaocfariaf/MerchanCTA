@@ -213,7 +213,7 @@ class SigninPage extends Component {
       })
     };
 
-    fetch("https://ces22-backend.herokuapp.com/login", requestInfo)
+    fetch("https://ces22-backend.herokuapp.com/registration", requestInfo)
       .then(res => res.json())
       .then(json => {
         localStorage.setItem("MerchanCTA-UserTokens", json.access_token);
@@ -251,6 +251,7 @@ class SigninPage extends Component {
         <div>
           <div style={styles.loginContainer}>
             <Paper style={styles.paper}>
+              <h1>Welcomme</h1>
               <form onSubmit={this.makingRequest.bind(this)}>
                 <TextField
                   hintText="E-mail"
@@ -265,12 +266,19 @@ class SigninPage extends Component {
                   type="password"
                   onChange={this.handleChange("password")}
                 />
+                <TextField
+                  hintText="Confirm Password"
+                  floatingLabelText="Confirm Password"
+                  fullWidth={true}
+                  type="password"
+                  onChange={this.handleChange("password")}
+                />
 
                 <div>
                   <span>{this.state.msg_user}</span>
                   <Link>
                     <RaisedButton
-                      label="Login"
+                      label="Sign In"
                       primary={true}
                       type="submit"
                       style={styles.loginBtn}
@@ -280,7 +288,7 @@ class SigninPage extends Component {
               </form>
             </Paper>
 
-            <div style={styles.buttonsDiv}>
+            {/* <div style={styles.buttonsDiv}>
               <FlatButton
                 label="Register"
                 href="/SigninPage.js"
@@ -294,7 +302,7 @@ class SigninPage extends Component {
                 style={styles.flatButton}
                 icon={<Help />}
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </MuiThemeProvider>
