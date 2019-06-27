@@ -6,6 +6,7 @@ import Coffee from "material-ui/svg-icons/maps/local-cafe";
 import Store from 'material-ui/svg-icons/action/store'
 import InfoBox from "../components/dashboard/InfoBox";
 import RecentlyProducts from "../components/dashboard/RecentlyProducts";
+import TopStores from "../components/dashboard/TopStores";
 import globalStyles from "../styles";
 import HeaderLace from "../components/dashboard/HeaderLace";
 import TopStores from "../components/dashboard/TopStores";
@@ -15,11 +16,21 @@ class DashboardPage extends React.Component {
     super(props);
     this.state = {
       recentProducts: [],
-      topStores: []
+      backup_recentProducts: [],
+      topStores: [],
+      clicked: {
+        comidas: false,
+        transporte: false,
+        outros: false
+      }
     };
   }
 
   componentDidMount() {
+    this.buscarDB()
+  }
+
+  buscarDB() {
     fetch("https://ces22-backend.herokuapp.com/product", { method: "GET" })
       .then(res_product => res_product.json())
       .then(json_product => {
@@ -47,7 +58,16 @@ class DashboardPage extends React.Component {
           return element;
         });
         console.log(productsWithIcons[0]);
-        this.setState({ recentProducts: productsWithIcons });
+        this.setState(
+        { 
+          recentProducts: productsWithIcons, 
+          backup_recentProducts: productsWithIcons, 
+          clicked: {
+            comidas: false,
+            transporte: false,
+            outros: false
+          } 
+        });
       });
 
     fetch("https://ces22-backend.herokuapp.com/store", { method: "GET" })
@@ -65,6 +85,60 @@ class DashboardPage extends React.Component {
       });
   }
 
+  clickComidas(event){
+    console.log(this.state.clicked)
+    const new_clicked = {
+      comidas: false,
+      transporte: false,
+      outros: false
+    } 
+    new_clicked['comidas'] = !this.state.clicked['comidas']
+    if (!this.state.clicked['comidas']) 
+    {
+      this.setState({ recentProducts: this.state.backup_recentProducts.filter((element) => element.label === "COMIDAS"), clicked: new_clicked });
+    }
+    else 
+    {
+      this.setState({ recentProducts: this.state.backup_recentProducts, clicked: new_clicked  });
+    }
+  }
+
+  clickTransporte(event){
+    console.log(this.state.clicked)
+    const new_clicked = {
+      comidas: false,
+      transporte: false,
+      outros: false
+    } 
+    new_clicked['transporte'] = !this.state.clicked['transporte']
+    if (!this.state.clicked['transporte']) 
+    {
+      this.setState({ recentProducts: this.state.backup_recentProducts.filter((element) => element.label === "TRANSPORTE"), clicked: new_clicked });
+    }
+    else 
+    {
+      this.setState({ recentProducts: this.state.backup_recentProducts, clicked: new_clicked  });
+    }
+  }
+
+  clickOutros(event){
+    console.log(this.state.clicked)
+    const new_clicked = {
+      comidas: false,
+      transporte: false,
+      outros: false
+    } 
+    new_clicked['outros'] = !this.state.clicked['outros']
+    if (!this.state.clicked['outros']) 
+    {
+      this.setState({ recentProducts: this.state.backup_recentProducts.filter((element) => element.label === "OUTROS"), clicked: new_clicked });
+    }
+    else 
+    {
+      this.setState({ recentProducts: this.state.backup_recentProducts, clicked: new_clicked  });
+    }
+  }
+
   render() {
     return (
       <div>
@@ -76,15 +150,15 @@ class DashboardPage extends React.Component {
         </div>
         
         <div className="row">
-          <div className="col-xs-12 col-sm-6 col-md-4 col-lg-4 m-b-15">
+          <div onClick={this.clickComidas.bind(this)} className="col-xs-12 col-sm-6 col-md-4 col-lg-4 m-b-15">
             <InfoBox Icon={Coffee} color={pink600} title="Comidas" />
           </div>
 
-          <div className="col-xs-12 col-sm-6 col-md-4 col-lg-4 m-b-15 ">
+          <div onClick={this.clickTransporte.bind(this)} className="col-xs-12 col-sm-6 col-md-4 col-lg-4 m-b-15 ">
             <InfoBox Icon={Car} color={orange600} title="Transporte" />
           </div>
 
-          <div className="col-xs-12 col-sm-6 col-md-4 col-lg-4 m-b-15 ">
+          <div onClick={this.clickOutros.bind(this)} className="col-xs-12 col-sm-6 col-md-4 col-lg-4 m-b-15 ">
             <InfoBox Icon={Assessment} color={purple600} title="Outros" />
           </div>
         </div>

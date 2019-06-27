@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { browserHistory } from "react-router";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Header from '../components/Header';
 import LeftDrawer from '../components/LeftDrawer';
@@ -11,7 +12,10 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    const  { user_email } = this.props.location.state;
+
+    const  user_email = localStorage.getItem("MerchanCTA-UserEmail")
+    if (user_email == null)
+      browserHistory.push('/login');
 
     this.state = {
       user_email,

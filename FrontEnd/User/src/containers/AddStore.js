@@ -1,3 +1,5 @@
+/**********  AINDA  PRECISA EDITAR*************************/
+
 import React, { Component } from "react";
 import { Link } from "react-router";
 import RaisedButton from "material-ui/RaisedButton";
@@ -7,6 +9,7 @@ import PageBase from "../components/PageBase";
 import Select from "material-ui/SelectField";
 import MenuItem from "material-ui/MenuItem";
 
+//import InputLabel from "material-ui/InputLabel";
 const styles = {
   toggleDiv: {
     maxWidth: 300,
@@ -32,19 +35,17 @@ const styles = {
 //   { label: "Candy Shop", value: 4 },
 //   { label: "NUNOS", value: 5 }
 // ];
-class FormPage extends Component {
+class AddStore extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       stores: [],
-      inputsInfo: {
-        name: "",
-        description: "",
-        preco: "",
-        label: "",
-        store_id: ""
-      }
+      name: "",
+      description: "",
+      preco: "",
+      label: "",
+      store_id: ""
     };
   }
 
@@ -60,7 +61,7 @@ class FormPage extends Component {
     )
       .then(res => res.json())
       .then(json => {
-        if (json.message == undefined) this.setState({ stores: json });
+        this.setState({ stores: json });
       });
   }
 
@@ -70,11 +71,9 @@ class FormPage extends Component {
     const requestInfo = {
       method: "POST",
       body: JSON.stringify({
-        name: this.state.inputsInfo["name"],
-        description: this.state.inputsInfo["description"],
-        preco: this.state.inputsInfo["preco"],
-        store_id: this.state.inputsInfo["store_id"],
-        label: this.state.inputsInfo["label"]
+        name: this.state.name,
+        description: this.state.description,
+        endereco: this.state.endereco
       }),
       headers: new Headers({
         "Content-type": "application/json"
@@ -82,12 +81,10 @@ class FormPage extends Component {
       //this.setState({ value: store_id }),
     };
 
-    console.log(requestInfo);
-
-    fetch("https://ces22-backend.herokuapp.com/product", requestInfo).then(
+    fetch("https://ces22-backend.herokuapp.com/getStores", requestInfo).then(
       response => {
         if (response.ok) {
-          alert("Item inserido com sucesso!");
+          alert("Rapaz, só não deu é pouco");
           return response.text();
         } else {
           throw new Error("não foi possível fazer o login");
@@ -103,15 +100,13 @@ class FormPage extends Component {
 
   handleChange(tag) {
     return event => {
-      const newInputsInfo = this.state.inputsInfo;
-      newInputsInfo[tag] = event.target.value;
-      this.setState({ inputsInfo: newInputsInfo });
+      this.setState({ tag: event.target.value });
     };
   }
 
   render() {
     return (
-      <PageBase title="Adicionar Produto" navigation="Admin / Forms">
+      <PageBase title="Adicionar Loja" navigation="Admin / Forms">
         <form onSubmit={this.makingRequest.bind(this)}>
           <TextField
             hintText="Nome"
@@ -120,41 +115,22 @@ class FormPage extends Component {
             onChange={this.handleChange("name")}
           />
           <TextField
-            id="filled-number"
-            label="Number"
-            floatingLabelText="Preço"
-            hintText="Exemplo: 10.23"
+            label="Text"
+            floatingLabelText="Endereco"
+            fullWidth={true}
+            hintText="Rua H8B apt. 241, CTA, São José dos Campos - SP"
             InputLabelProps={{
               shrink: true
             }}
             margin="normal"
             variant="filled"
-            onChange={this.handleChange("preco")}
-          />
-          <div>
-            {this.state.stores.map(store => (
-              <MenuItem key={store.id}>
-                {" Id: " + store.id + " - " + store.name}
-              </MenuItem>
-            ))}
-          </div>
-          <TextField
-            hintText="Id de sua loja (lista a cima)"
-            floatingLabelText="Id"
-            fullWidth={true}
-            onChange={this.handleChange("store_id")}
+            onChange={this.handleChange("endereco")}
           />
           <TextField
             hintText="Descrição"
             floatingLabelText="Descrição"
             fullWidth={true}
             onChange={this.handleChange("description")}
-          />
-          <TextField
-            hintText="Escolha uma: COMIDAS, TRANSPORTE e OUTROS"
-            floatingLabelText="Label"
-            fullWidth={true}
-            onChange={this.handleChange("label")}
           />
 
           <div style={styles.buttons}>
@@ -177,4 +153,4 @@ class FormPage extends Component {
   }
 }
 
-export default FormPage;
+export default AddStore;
