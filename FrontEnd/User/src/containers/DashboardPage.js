@@ -21,14 +21,25 @@ class DashboardPage extends React.Component {
       .then(json => {
         const withIcons = json.map((element) => {
           let relatedIcon;
-          if (element.label === "COMIDAS")
+          let relatedIconColor;
+          if (element.label === "COMIDAS") 
+          {
             relatedIcon = Coffee;
+            relatedIconColor = pink600;
+          }
           else if (element.label === "TRANSPORTE")
+          {
             relatedIcon = Car;
+            relatedIconColor = orange600;
+          }
           else if (element.label === "OUTROS")
+          {
             relatedIcon = Assessment;
+            relatedIconColor = purple600;
+          }
 
           element.relatedIcon = relatedIcon;
+          element.relatedIconColor = relatedIconColor;
           return element;
         });
         console.log(withIcons[0]);
