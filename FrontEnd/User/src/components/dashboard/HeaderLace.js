@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import {grey800, transparent} from 'material-ui/styles/colors';
+import {grey800} from 'material-ui/styles/colors';
 // import {typography} from 'material-ui/styles';
 
 class HeaderLace extends React.Component {

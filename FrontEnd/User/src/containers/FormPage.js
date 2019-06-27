@@ -4,7 +4,6 @@ import RaisedButton from "material-ui/RaisedButton";
 import TextField from "material-ui/TextField";
 import { grey400 } from "material-ui/styles/colors";
 import PageBase from "../components/PageBase";
-import Select from "material-ui/SelectField";
 import MenuItem from "material-ui/MenuItem";
 
 const styles = {

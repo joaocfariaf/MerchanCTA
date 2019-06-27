@@ -23,7 +23,7 @@ export default {
   plugins: [
     new WebpackMd5Hash(),
 
-    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
 
     new webpack.DefinePlugin(GLOBALS),
 
