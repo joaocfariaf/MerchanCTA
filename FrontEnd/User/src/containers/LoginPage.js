@@ -171,13 +171,6 @@ class LoginPage extends Component {
                 style={styles.flatButton}
                 icon={<PersonAdd />}
               />
-
-              <FlatButton
-                label="Esqueceu a Senha?"
-                href="/"
-                style={styles.flatButton}
-                icon={<Help />}
-              />
             </div>
           </div>
         </div>

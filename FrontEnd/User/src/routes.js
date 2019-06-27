@@ -12,7 +12,7 @@ import ProductPage from "./containers/ProductPage";
 export default (
   <Route>
     <Route path="login" component={LoginPage} />
-    <Route path="/" component={LoginPage}>
+    <Route path="/" component={App}>
       <IndexRoute component={Dashboard} />
       <Route path="dashboard" component={Dashboard} />
       <Route path="form" component={FormPage} />
