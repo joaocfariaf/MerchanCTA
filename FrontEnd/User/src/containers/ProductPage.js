@@ -5,7 +5,6 @@ import Car from "material-ui/svg-icons/maps/directions-car";
 import Coffee from "material-ui/svg-icons/maps/local-cafe";
 import InfoBox from '../components/dashboard/InfoBox';
 import RecentlyProducts from '../components/dashboard/RecentlyProducts';
-import TopStores from "../components/dashboard/TopStores" 
 import globalStyles from '../styles';
 
 class ProductPage extends React.Component {
@@ -22,7 +21,7 @@ class ProductPage extends React.Component {
 
   componentDidMount() {
     const { store_id } = this.props.location.state;
-    console.log(store_id)
+    console.log(store_id);
     const url = 'https://ces22-backend.herokuapp.com/store/' + store_id;
     fetch(url, { method: 'GET' })
       .then(res => res.json())

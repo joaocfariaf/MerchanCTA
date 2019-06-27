@@ -5,34 +5,84 @@ import {grey800, transparent} from 'material-ui/styles/colors';
 class HeaderLace extends React.Component {
 
   render() {
-    const {title} = this.props;
+    const {title, Icon = "url(" + require("../../images/moldura.png") + ")"} = this.props;
 
     const styles = {
       content: {
+        padding: '5px 10px',
         textAlign: 'center',
-        height: 180,
-        backgroundImage: "url(" + require("../../images/moldura.png") + ")",
-    },
-    text: {
-        fontSize: 80,
+        height: 80
+      },
+      text: {
+        fontSize: 30,
+        fontWeight: typography.fontWeightLight,
         color: grey800,
-      } 
+      },
+      iconSpan: {
+        float: 'left',
+        height: 90,
+        width: 90,
+        textAlign: 'center',
+        backgroundColor: transparent
+      },
+      icon: {
+        height: 48,
+        width: 48,
+        marginTop: 20,
+        maxWidth: '100%'
+
+      }
     };
 
     return (
-        <div style={styles.content}>
+      <div>
+        <span style={styles.iconSpan}>
+          <Icon color={white}
+                style={styles.icon}
+          />
+        </span>
+
+        < div style={styles.content}>
           <span style={styles.text}>{title}</span>
+        </div>  
         </div>
-      );
+      )
   }
 }
 
-HeaderLace.propTypes = {
-  title: PropTypes.string,
-};
+  // render() {
+  //   const {title} = this.props;
 
-export default HeaderLace;
+  //   const styles = {
+  //     content: {
+  //       textAlign: 'center',
+  //       backgroundImage: "url(" + require("../../images/moldura.png") + ")"
+  //   },
+  //   text: {
+  //       fontSize: 80,
+  //       color: grey800,
+  //     } 
+  //   };
 
+  //   return (
+
+  //       <div style={styles.content}>
+  //         <span style={styles.text}>{title}</span>
+  //       </div>
+  //     );
+  // }
+
+class InfoBox extends React.Component {
+
+ 
+
+  HeaderLace.propTypes = {
+    Icon: PropTypes.any, // eslint-disable-line
+    title: PropTypes.string,
+  };
+  
+  export default HeaderLace;
+  
 
 
 // const LeftDrawer = props => {

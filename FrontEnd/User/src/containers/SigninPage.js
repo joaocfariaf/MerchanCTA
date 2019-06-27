@@ -76,7 +76,7 @@ class SigninPage extends Component {
   makingRequest(event) {
     event.preventDefault();
 
-    console.log(this.inputsInfo);
+    //console.log(this.inputsInfo);
 
     const requestInfo = {
       method: "POST",

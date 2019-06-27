@@ -13,6 +13,7 @@ import {grey400, white, pink600} from 'material-ui/styles/colors';
 import {typography} from 'material-ui/styles';
 import StarRatingComponent from 'react-star-rating-component';
 import Star from './Star';
+import store from 'material-ui/svg-icons/action/store';
 
 const TopStores = props => {
   const styles = {
@@ -57,7 +58,7 @@ const TopStores = props => {
               }
             />
             <div className="col-xs-12 col-sm-6 col-md-4 col-lg-4 m-b-15 ">
-              <Star />
+              <Star data={{store_id: item.id, rating: item.rating}}/>
             </div>
             <Divider inset={true} />
           </div>

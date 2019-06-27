@@ -3,12 +3,11 @@ import { pink600, purple600, orange600, green600 } from "material-ui/styles/colo
 import Assessment from "material-ui/svg-icons/action/card-giftcard";
 import Car from "material-ui/svg-icons/maps/directions-car";
 import Coffee from "material-ui/svg-icons/maps/local-cafe";
-import Store from 'material-ui/svg-icons/action/store'
+import Store from 'material-ui/svg-icons/action/store';
 import InfoBox from "../components/dashboard/InfoBox";
 import RecentlyProducts from "../components/dashboard/RecentlyProducts";
 import TopStores from "../components/dashboard/TopStores";
 import globalStyles from "../styles";
-import HeaderLace from "../components/dashboard/HeaderLace";
 
 class DashboardPage extends React.Component {
   constructor(props) {
@@ -26,7 +25,7 @@ class DashboardPage extends React.Component {
   }
 
   componentDidMount() {
-    this.buscarDB()
+    this.buscarDB();
   }
 
   buscarDB() {
@@ -79,13 +78,13 @@ class DashboardPage extends React.Component {
           element.relatedIcon = relatedIcon;
           element.relatedIconColor = relatedIconColor;
           return element;
-        })
+        });
         this.setState({ topStores: storesWithIcons });
       });
   }
 
   clickComidas(event){
-    console.log(this.state.clicked)
+    console.log(this.state.clicked);
     const new_clicked = {
       comidas: false,
       transporte: false,
@@ -103,7 +102,7 @@ class DashboardPage extends React.Component {
   }
 
   clickTransporte(event){
-    console.log(this.state.clicked)
+    console.log(this.state.clicked);
     const new_clicked = {
       comidas: false,
       transporte: false,
@@ -121,13 +120,13 @@ class DashboardPage extends React.Component {
   }
 
   clickOutros(event){
-    console.log(this.state.clicked)
+    console.log(this.state.clicked);
     const new_clicked = {
       comidas: false,
       transporte: false,
       outros: false
-    } 
-    new_clicked['outros'] = !this.state.clicked['outros']
+    } ;
+    new_clicked['outros'] = !this.state.clicked['outros'];
     if (!this.state.clicked['outros']) 
     {
       this.setState({ recentProducts: this.state.backup_recentProducts.filter((element) => element.label === "OUTROS"), clicked: new_clicked });
@@ -144,7 +143,6 @@ class DashboardPage extends React.Component {
         <h3 style={globalStyles.navigation} />
         <div className="row">
           <div className="col-xs-12 col-sm-6 col-md-4 col-lg-4 m-b-15">
-            <HeaderLace title="PAPAPAP"/>
           </div>
         </div>
         
