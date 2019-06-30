@@ -5,13 +5,8 @@ import {List, ListItem} from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
-import IconButton from 'material-ui/IconButton';
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
-import IconMenu from 'material-ui/IconMenu';
-import MenuItem from 'material-ui/MenuItem';
-import {grey400, white} from 'material-ui/styles/colors';
+import {white} from 'material-ui/styles/colors';
 import {typography} from 'material-ui/styles';
-import StarRatingComponent from 'react-star-rating-component';
 import Star from './Star';
 
 const TopStores = props => {
@@ -23,18 +18,6 @@ const TopStores = props => {
       color: white
     }
   };
-
-  const iconButtonElement = (
-    <IconButton touch={true} tooltipPosition="bottom-left">
-      <MoreVertIcon color={grey400} />
-    </IconButton>
-  );
-
-  const rightIconMenu = (
-    <IconMenu iconButtonElement={iconButtonElement}>
-      <MenuItem>View</MenuItem>
-    </IconMenu>
-  );
 
   return (
     <Paper>

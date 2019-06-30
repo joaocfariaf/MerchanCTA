@@ -10,11 +10,15 @@ class InfoBox extends React.Component {
 
     const styles = {
       content: {
-        padding: '5px 10px',
+        paddingLeft: 10,
+        paddingRight: 10,
+        paddingTop: 30,
         textAlign: 'center',
-        height: 80
+        height: 60
       },
       text: {
+        textAlign: 'center',
+        marginTop: 40,
         fontSize: 30,
         fontWeight: typography.fontWeightLight,
         color: grey800,

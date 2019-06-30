@@ -8,7 +8,6 @@ import InfoBox from "../components/dashboard/InfoBox";
 import RecentlyProducts from "../components/dashboard/RecentlyProducts";
 import TopStores from "../components/dashboard/TopStores";
 import globalStyles from "../styles";
-import HeaderLace from "../components/dashboard/HeaderLace";
 
 class DashboardPage extends React.Component {
   constructor(props) {
@@ -142,11 +141,6 @@ class DashboardPage extends React.Component {
     return (
       <div>
         <h3 style={globalStyles.navigation} />
-        <div className="row">
-          <div className="col-xs-12 col-sm-6 col-md-4 col-lg-4 m-b-15">
-            <HeaderLace title="PAPAPAP"/>
-          </div>
-        </div>
         
         <div className="row">
           <div onClick={this.clickComidas.bind(this)} className="col-xs-12 col-sm-6 col-md-4 col-lg-4 m-b-15">

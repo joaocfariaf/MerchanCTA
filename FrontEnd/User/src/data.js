@@ -1,7 +1,6 @@
 import React from "react";
 import Assessment from "material-ui/svg-icons/action/home";
 import ProdList from "material-ui/svg-icons/action/view-list";
-import PermIdentity from "material-ui/svg-icons/action/perm-identity";
 import Grocery from "material-ui/svg-icons/maps/local-grocery-store";
 import Add from "material-ui/svg-icons/av/playlist-add";
 
