@@ -7,6 +7,8 @@ from config.DataBase import db_session as db
 parser = reqparse.RequestParser()
 parser.add_argument('name')
 parser.add_argument('description')
+parser.add_argument('address')
+parser.add_argument('user_id')
 
 class StoreApi(Resource):
     def get(self, store_id):
@@ -32,7 +34,12 @@ class StoreListApi(Resource):
 
     def post(self):
         args = parser.parse_args()
-        store = Store(args['name'], args['description'])
+        store = Store(
+            name=args['name'], 
+            description=args['description'],
+            address=args['address'],
+            rating=3,
+            user_id=args['user_id'])
         db.add(store)
         db.commit()
         return store.serialize(), 201

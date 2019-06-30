@@ -1,5 +1,6 @@
 from flask_restful import Resource, reqparse
 
+from models.Store import Store
 from models.User import User
 from config.DataBase import db_session as db
 
@@ -27,6 +28,8 @@ class UserRegistration(Resource):
             refresh_token = create_refresh_token(identity = data['email'])
             return {
                 'message': 'User {} was created'.format(data['email']),
+                'user_email': new_user.email,
+                'user_id': new_user.id,
                 'access_token': access_token,
                 'refresh_token': refresh_token
             }, 200
@@ -37,21 +40,26 @@ class UserRegistration(Resource):
 class UserLogin(Resource):
     def post(self):
         data = parser.parse_args()
-        current_user = User.find_by_email(data['email'])
+        try:
+            current_user = User.find_by_email(data['email'])
 
-        if not current_user:
-            return {'message': 'User {} doesn\'t exist'.format(data['email'])}
-        
-        if User.verify_hash(current_user.password, data['password']):
-            access_token = create_access_token(identity = data['email'])
-            refresh_token = create_refresh_token(identity = data['email'])
-            return {
-                'message': 'Logged in as {}'.format(current_user.email),
-                'access_token': access_token,
-                'refresh_token': refresh_token
-            }, 200
-        else:
-            return {'message': 'Wrong credentials'}
+            if not current_user:
+                return {'message': 'Email {} isn\'t registered'.format(data['email'])}, 403
+            
+            if User.verify_hash(current_user.password, data['password']):
+                access_token = create_access_token(identity = data['email'])
+                refresh_token = create_refresh_token(identity = data['email'])
+                return {
+                    'message': 'Logged in as {}'.format(current_user.email),
+                    'user_email': current_user.email,
+                    'user_id': current_user.id,
+                    'access_token': access_token,
+                    'refresh_token': refresh_token
+                }, 200
+            else:
+                return {'message': 'Wrong credentials'}, 403
+        except:
+            return {'message': 'Something went wrong'}, 500 
       
       
 class TokenRefresh(Resource):
@@ -76,4 +84,9 @@ class SecretResource(Resource):
         return {
             'answer': 42
         }
+
+class GetStoresFromUser(Resource):
+    def get(self, user_id):
+        list_stores = Store.query.filter(Store.user_id == user_id).all()
+        return list(map(lambda x : x.serialize(), list_stores))
       

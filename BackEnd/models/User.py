@@ -6,7 +6,7 @@ from sqlalchemy.orm import relationship
 from config.DataBase import Base as Base
 from config.DataBase import db_session as db
 
-from run import bcrypt
+from app import bcrypt
 import json
 
 class User(Base):
@@ -17,10 +17,14 @@ class User(Base):
     password = Column(String(255), nullable=False)
     registered_on = Column(DateTime, nullable=False)
 
+    stores = relationship("Store")
+    ratings = relationship("Rating")
+
     def __init__(self, email, password):
         Base()
         self.email = email
         self.password = bcrypt.generate_password_hash(password).decode()
+
         self.registered_on = datetime.datetime.now()
 
     def save_to_db(self):
