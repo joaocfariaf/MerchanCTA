@@ -6,7 +6,7 @@
     "npm": ">=3"
   },
   "scripts": {
-    "start": "npm-run-all --parallel test:watch open:src lint:watch",
+    "start": "serve -p $PORT -s dist",
     "open:src": "babel-node tools/srcServer.js",
     "open:dist": "babel-node tools/distServer.js",
     "lint": "esw webpack.config.* src tools --color",
@@ -14,7 +14,7 @@
     "clean-dist": "npm run remove-dist && mkdir dist",
     "remove-dist": "rimraf ./dist",
     "prebuild": "npm run clean-dist && npm run lint && npm run test",
-    "build": "babel-node tools/build.js && npm run open:dist",
+    "build": "babel-node tools/build.js",
     "test": "mocha tools/testSetup.js \"src/**/*.spec.js\" --reporter progress",
     "test:cover": "babel-node node_modules/isparta/bin/isparta cover --root src --report html node_modules/mocha/bin/_mocha -- --require ./tools/testSetup.js \"src/**/*.spec.js\" --reporter progress",
     "test:cover:travis": "babel-node node_modules/isparta/bin/isparta cover --root src --report lcovonly _mocha -- --require ./tools/testSetup.js \"src/**/*.spec.js\" && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
@@ -35,7 +35,8 @@
     "react-router-dom": "4.1.1",
     "react-star-rating-component": "1.4.1",
     "react-tap-event-plugin": "2.0.1",
-    "recharts": "0.20.8"
+    "recharts": "0.20.8",
+    "serve": "11.0.2"
   },
   "devDependencies": {
     "autoprefixer": "6.7.3",
